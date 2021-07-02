@@ -93,7 +93,7 @@
 
 #define		DEBUG1		// 送信データ表示
 //#define		DEBUG2	// 処理時間表示
-//#define		OFFSET	// オフセット有り　5分進める
+#define		OFFSET	// オフセット有り　5分進める
 #define		PTHREAD		// pthread を使うぞ
 
 //　関数プロトタイプ宣言
@@ -125,10 +125,6 @@ int main(void)
 	pthread_t	thread;
 #endif
 
-#ifdef OFFSET	// 5分進める	
-	t = t + 300;
-#endif
-
 	wiringPiSetup();
 
 // 13.3kHz駆動 3倍波が 40kHz 
@@ -140,6 +136,9 @@ int main(void)
 	pwmWrite(PWM, 0);
 
 	t = time(NULL);			// 初回時刻設定
+#ifdef OFFSET	// 5分進める	
+	t = t + 300;
+#endif
 	localtime_r(&t, &tm);
 	prevSec = currSec = tm.tm_sec;
 	prevMin = currMin = tm.tm_min;
@@ -433,8 +432,8 @@ time_t decodeTimeCode(void)	// タイムコード～time_t変換
 
 	tm.tm_year = 100 + getDigit(41, 44) * 10 + getDigit(45, 48);
 	// JJY yday: 1～365　tm_yday: 0～364 なので -1 する
-	yday = getDigit(22, 23) * 100 + getDigit(25, 28) * 10 
-											+ getDigit(30, 33) - 1;
+	yday = getDigit(22, 23) * 100 + getDigit(25, 28) * 10
+			+ getDigit(30, 33) - 1;
 	// 1901～2099の間は !(year & 3) が閏年
 	ydayToMonDay(yday, !(tm.tm_year & 3), &mon, &day);
 	tm.tm_mon = mon;
