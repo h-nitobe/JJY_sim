@@ -137,6 +137,8 @@ int main(void)
 //    pinMode(CLK, GPIO_CLOCK);
     digitalWrite(CLK, LOW);
     pinMode(CLK, OUTPUT);
+    setPadDrive(0, 7);         // ドライブ能力　グループ0(GPIO 0-27) 16mA
+    
 
     t = time(NULL);            // 初回時刻設定
 #ifdef OFFSET    // 5分進める    
