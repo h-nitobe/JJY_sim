@@ -6,5 +6,7 @@ RaspberryPi JJY simulator
 * JJY_sim3.c : GPIO_CLOCK （GPIO4）出力に変更しました。
 * 
 ![クリップボード一時ファイル01](https://user-images.githubusercontent.com/37722208/123601840-1f00a600-d833-11eb-8b1d-26d08563b52e.png)
+コーデイングとデバグはRaspberryPi3で行った。故意に5分（300秒）進めてデバグ。電波時計は５分進んだ6:08。
 ![206069026_4119148374835778_6501405237282042434_n](https://user-images.githubusercontent.com/37722208/124349836-40470500-dc2c-11eb-8b28-2e25515d5ea6.jpg)
+RaspberryPiZeroでも動作確認。
 ![209611447_4122612391156043_5187938338707627728_n](https://user-images.githubusercontent.com/37722208/124349860-5f459700-dc2c-11eb-85ef-1ac361b9f594.jpg)
